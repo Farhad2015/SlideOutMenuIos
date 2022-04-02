@@ -32,7 +32,6 @@ struct Home: View {
 
 
 struct SlideMenu: View{
-    var edges = UIApplication.shared.windows.first?.safeAreaInsets
     var body: some View{
         HStack(spacing: 0){
             VStack(alignment: .leading){
@@ -47,7 +46,7 @@ struct SlideMenu: View{
                             .fontWeight(.bold)
                             .foregroundColor(.black)
                         
-                        Text("@_OctaEdge")
+                        Text("@_OctaEdges")
                             .foregroundColor(.gray)
                         
                         //Follow Counts ...
@@ -64,7 +63,7 @@ struct SlideMenu: View{
                         }
                         .padding(.top, 10)
                     }
-                    
+
                     Spacer(minLength: 0)
                     
                     Button(action: {}){
@@ -76,8 +75,8 @@ struct SlideMenu: View{
                 Spacer(minLength: 0)
             }
             .padding(.horizontal, 20)
-            .padding(.top, edges!.top == 0 ? 15 : edges?.top)
-            .padding(.bottom, edges!.bottom == 0 ? 15 : edges?.bottom)
+            .padding(.top, UIScreen.main.bounds.height > 750 ? 50 : 30)
+            .padding(.bottom, UIScreen.main.bounds.height > 750 ? 50 : 30)
             //default width ...
             .frame(width: UIScreen.main.bounds.width - 90)
             .background(Color.white)
@@ -96,12 +95,14 @@ struct FollowView: View {
     var title: String
     
     var body: some View{
-        HStack{
+        HStack(spacing: 10){
             Text("\(count)")
+                .font(.caption)
                 .fontWeight(.bold)
                 .foregroundColor(.black)
             
             Text(title)
+                .font(.caption)
                 .foregroundColor(.gray)
         }
     }
